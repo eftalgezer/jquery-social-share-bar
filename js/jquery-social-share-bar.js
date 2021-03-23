@@ -109,6 +109,10 @@
         'reddit': 'fab fa-reddit-alien',
         'digg': 'fab fa-digg',
         'email': 'fas fa-envelope',
+        'whatsapp': 'fab fa-whatsapp',
+        'telegram': 'fab fa-telegram-plane',
+        'facebook-messenger': 'fab fa-facebook-messenger',
+        'comment': 'fas fa-comment',
       }
 
       // Special handling for email
