@@ -118,7 +118,7 @@
         'telegram': 'fab fa-telegram-plane',
         'facebook_messenger': 'fab fa-facebook-messenger',
         'comment': 'fas fa-comment',
-        'webshareapi': 'fab fa-share-alt',
+        'webshareapi': 'fas fa-share-alt',
       }
 
       // Special handling for email
