@@ -78,7 +78,7 @@
           // Bind click
           $element.on('click', '.' + settings.itemTriggerClass, function (e) {
             e.preventDefault();
-            if(this.class === settings.itemTriggerClass + 'webshareapi') {
+            if(this.class === settings.itemTriggerClass + ' webshareapi') {
               navigator.share({
                 title: t,
                 text : d,
