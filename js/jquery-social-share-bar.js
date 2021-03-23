@@ -77,20 +77,21 @@
 
           // Bind click
           $element.on('click', '.' + settings.itemTriggerClass, function (e) {
-//            if(url.indexOf("mailto")==-1) {
-              e.preventDefault();
+            e.preventDefault();
+            if(this.class==='webshareapi') {
+              navigator.share({
+                title: t,
+                text : d,
+                url: u
+              });
+            }
+            else {
               var top = (screen.height / 2) - (settings.popupHeight / 2),
                   left = (screen.width / 2) - (settings.popupWidth / 2);
               window.open($(this).data('href') || $(this).attr('href'), 't', 'toolbar=0,resizable=1,status=0,copyhistory=no,width=' + settings.popupWidth + ',height=' + settings.popupHeight + ',top=' + top + ',left=' + left);
-//            }
-//            else {
-//              $(this).attr('href', url);
-//              $(this).unbind();
-//            }
+            }
           });
-
         });// End plugin instance
-
       }
     };
 
