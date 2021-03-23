@@ -25,9 +25,6 @@
         email: {url: 'mailto:?subject=|t|&body=You might want to check this out: |u|'},
         whatsapp: {url: ''},
         telegram: {url: ''},
-        facebook_messenger: {url: ''},
-        comment: {url: ''},
-        webshareapi: {url: ''},
       }
     };
 
