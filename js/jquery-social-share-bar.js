@@ -66,10 +66,12 @@
           else {
             for (var item in settings.channels) {
               item = settings.channels[item];
-              href = helpers.channels[item].url;
-              href = href.replace('|u|', u).replace('|t|', t).replace('|d|', d)
-                .replace('|140|', t.substring(0, 130));
-              $(settings.itemTemplate({provider: item, href: href, itemTriggerClass: settings.itemTriggerClass})).appendTo($element);
+              if (item !== 'webshareapi') {
+                href = helpers.channels[item].url;
+                href = href.replace('|u|', u).replace('|t|', t).replace('|d|', d)
+                  .replace('|140|', t.substring(0, 130));
+                $(settings.itemTemplate({provider: item, href: href, itemTriggerClass: settings.itemTriggerClass})).appendTo($element);
+              }
             }
           }
 
