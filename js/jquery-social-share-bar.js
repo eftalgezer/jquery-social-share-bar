@@ -78,7 +78,7 @@
           // Bind click
           $element.on('click', '.' + settings.itemTriggerClass, function (e) {
             e.preventDefault();
-            if(this.class==='webshareapi') {
+            if(this.class === settings.itemTriggerClass + 'webshareapi') {
               navigator.share({
                 title: t,
                 text : d,
@@ -110,7 +110,8 @@
     popupHeight: 528,
     channels: ['facebook', 'twitter', 'linkedin', 'email'],
     itemTriggerClass: 'js-share',
-    containerTemplate: function (props) {
+    containerTemplate: function (
+    ) {
       return '<ul class="sharing-providers"></ul>';
     },
 
