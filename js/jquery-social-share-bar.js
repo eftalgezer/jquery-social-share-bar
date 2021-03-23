@@ -23,8 +23,8 @@
         pinterest: {url: 'https://pinterest.com/pin/create/button/?url=|u|&media=&description=|d|'},
         stumbleupon: {url: 'https://www.stumbleupon.com/submit?url=|u|&title=|t|'},
         email: {url: 'mailto:?subject=|t|&body=You might want to check this out: |u|'},
-        whatsapp: {url: ''},
-        telegram: {url: ''},
+        whatsapp: {url: 'https://wa.me/?text=|t| |u|'},
+        telegram: {url: 'https://t.me/share/url?url=|u|&text=|t|'},
       }
     };
 
@@ -113,7 +113,6 @@
         'email': 'fas fa-envelope',
         'whatsapp': 'fab fa-whatsapp',
         'telegram': 'fab fa-telegram-plane',
-        'facebook_messenger': 'fab fa-facebook-messenger',
         'comment': 'fas fa-comment',
         'webshareapi': 'fas fa-share-alt',
       }
