@@ -19,7 +19,6 @@
         linkedin: {url: 'https://www.linkedin.com/shareArticle?mini=true&url=|u|&title=|t|&summary=|d|'},
         tumblr: {url: 'https://www.tumblr.com/share?v=3&u=|u|'},
         digg: {url: 'https://digg.com/submit?url=|u|&title=|t|'},
-        googleplus: {url: 'https://plusone.google.com/_/+1/confirm?hl=en&url=|u|'},
         reddit: {url: 'https://reddit.com/submit?url=|u|'},
         pinterest: {url: 'https://pinterest.com/pin/create/button/?url=|u|&media=&description=|d|'},
         stumbleupon: {url: 'https://www.stumbleupon.com/submit?url=|u|&title=|t|'},
@@ -93,7 +92,7 @@
   $.fn.share.defaults = {
     popupWidth: 640,
     popupHeight: 528,
-    channels: ['facebook', 'twitter', 'linkedin', 'googleplus', 'email'],
+    channels: ['facebook', 'twitter', 'linkedin', 'email'],
     itemTriggerClass: 'js-share',
     containerTemplate: function (props) {
       return '<ul class="sharing-providers"></ul>';
@@ -104,7 +103,6 @@
         'facebook': 'fab fa-facebook-f',
         'twitter': 'fab fa-twitter',
         'linkedin': 'fab fa-linkedin-in',
-        'googleplus': 'fab fa-google-plus-g',
         'pinterest': 'fab fa-pinterest-p',
         'tumblr': 'fab fa-tumblr',
         'stumbleupon': 'fab fa-stumbleupon',
@@ -113,8 +111,8 @@
         'email': 'fas fa-envelope',
       }
 
-      // Special handling for email and Google+
-      var providerName = props.provider === 'email' ? 'email' : props.provider === 'googleplus' ? 'Google+' : props.provider.charAt(0).toUpperCase() + props.provider.slice(1);
+      // Special handling for email
+      var providerName = props.provider === 'email' ? 'email' : props.provider.charAt(0).toUpperCase() + props.provider.slice(1);
 
       return '<li class="' + props.provider + '">' +
         '<a href="#" data-href="' + props.href + '" title="Share this page ' + (props.provider === 'email' ? 'via ' : 'on ') + providerName + '" class=' + props.itemTriggerClass + ' ' + props.provider + '">' +
