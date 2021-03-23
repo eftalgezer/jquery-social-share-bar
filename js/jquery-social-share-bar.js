@@ -60,12 +60,17 @@
           $element.addClass(theme);
 
           // Append HTML for each network button
-          for (var item in settings.channels) {
-            item = settings.channels[item];
-            href = helpers.channels[item].url;
-            href = href.replace('|u|', u).replace('|t|', t).replace('|d|', d)
-              .replace('|140|', t.substring(0, 130));
-            $(settings.itemTemplate({provider: item, href: href, itemTriggerClass: settings.itemTriggerClass})).appendTo($element);
+          if (('webshareapi' in settings.channels) && navigator.share) {
+            $(settings.itemTemplate({provider: 'webshareapi', itemTriggerClass: settings.itemTriggerClass})).appendTo($element);
+          }
+          else {
+            for (var item in settings.channels) {
+              item = settings.channels[item];
+              href = helpers.channels[item].url;
+              href = href.replace('|u|', u).replace('|t|', t).replace('|d|', d)
+                .replace('|140|', t.substring(0, 130));
+              $(settings.itemTemplate({provider: item, href: href, itemTriggerClass: settings.itemTriggerClass})).appendTo($element);
+            }
           }
 
           // Bind click
@@ -120,6 +125,13 @@
       // Special handling for email
       var providerName = props.provider === 'email' ? 'email' : props.provider.charAt(0).toUpperCase() + props.provider.slice(1);
 
+      if (props.provider === 'webshareapi') {
+        return '<li class="' + props.provider + '">' +
+        '<a href="#" title="Share" class=' + props.itemTriggerClass + ' ' + props.provider + '">' +
+        '<i class="' + iconClasses[props.provider] + '"></i>' +
+        '</a>' +
+        '</li>';
+      }
       return '<li class="' + props.provider + '">' +
         '<a href="#" data-href="' + props.href + '" title="Share this page ' + (props.provider === 'email' ? 'via ' : 'on ') + providerName + '" class=' + props.itemTriggerClass + ' ' + props.provider + '">' +
         '<i class="' + iconClasses[props.provider] + '"></i>' +
