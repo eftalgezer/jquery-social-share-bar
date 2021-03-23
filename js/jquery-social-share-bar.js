@@ -60,7 +60,7 @@
           $element.addClass(theme);
 
           // Append HTML for each network button
-          if (('webshareapi' in settings.channels) && navigator.share !== undefined) {
+          if ((settings.channels.indexOf('webshareapi') > -1) && (navigator.share !== undefined)) {
             $(settings.itemTemplate({provider: 'webshareapi', itemTriggerClass: settings.itemTriggerClass})).appendTo($element);
           }
           else {
