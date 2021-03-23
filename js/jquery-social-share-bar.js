@@ -135,7 +135,7 @@
 
       if (props.provider === 'webshareapi') {
         return '<li class="' + props.provider + '">' +
-        '<a href="#" title="Share" class=' + props.itemTriggerClass + ' ' + props.provider + '">' +
+        '<a href="#" title="Share" class="' + props.itemTriggerClass + ' ' + props.provider + '">' +
         '<i class="' + iconClasses[props.provider] + '"></i>' +
         '</a>' +
         '</li>';
