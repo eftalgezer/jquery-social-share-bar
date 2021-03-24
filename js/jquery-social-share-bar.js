@@ -66,7 +66,7 @@
           else {
             for (var item in settings.channels) {
               item = settings.channels[item];
-              if (item !== 'webshareapi' || item !== 'comment') {
+              if ((item !== 'webshareapi') || (item !== 'comment')) {
                 href = helpers.channels[item].url;
                 href = href.replace('|u|', u).replace('|t|', t).replace('|d|', d)
                   .replace('|140|', t.substring(0, 130));
@@ -91,7 +91,8 @@
             else if (!($(this).hasClass('comment'))) {
               var top = (screen.height / 2) - (settings.popupHeight / 2),
                   left = (screen.width / 2) - (settings.popupWidth / 2);
-              window.open($(this).data('href') || $(this).attr('href'), 't', 'toolbar=0,resizable=1,status=0,copyhistory=no,width=' + settings.popupWidth + ',height=' + settings.popupHeight + ',top=' + top + ',left=' + left);
+              window.open($(this).data('href') 
+                          $(this).attr('href'), 't', 'toolbar=0,resizable=1,status=0,copyhistory=no,width=' + settings.popupWidth + ',height=' + settings.popupHeight + ',top=' + top + ',left=' + left);
             }
           });
         });// End plugin instance
