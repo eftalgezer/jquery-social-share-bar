@@ -144,16 +144,16 @@
         '</a>' +
         '</li>';
       }
-//      if (props.provider === 'comment') {
-//        return '<li class="' + props.provider + '">' +
-//        '<a href="#" title="Comment on this page" class="' + props.itemTriggerClass + ' ' + props.provider + '">' +
-//          '<i class="' + iconClasses[props.provider] + '">' +
-//          (((settings.commentnumber !== undefined) && Number.isInteger(settings.commentnumber)) ?
-//           '<span class="' + props.itemTriggerClass + ' commentnumber' + '">' + settings.commentnumber + '</span>' : '') +
-//           '</i>' +
-//        '</a>' +
-//        '</li>';
-//      }
+      if (props.provider === 'comment') {
+        return '<li class="' + props.provider + '">' +
+        '<a href="#" title="Comment on this page" class="' + props.itemTriggerClass + ' ' + props.provider + '">' +
+          '<i class="' + iconClasses[props.provider] + '">' +
+          (((settings.commentnumber !== undefined) && Number.isInteger(settings.commentnumber)) ?
+           '<span class="' + props.itemTriggerClass + ' commentnumber' + '">' + settings.commentnumber + '</span>' : '') +
+           '</i>' +
+        '</a>' +
+        '</li>';
+      }
       return '<li class="' + props.provider + '">' +
         '<a href="#" data-href="' + props.href + '" title="Share this page ' + (props.provider === 'email' ? 'via ' : 'on ') + providerName + '" class="' + props.itemTriggerClass + ' ' + props.provider + '">' +
         '<i class="' + iconClasses[props.provider] + '"></i>' +
