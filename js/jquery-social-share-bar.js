@@ -73,9 +73,9 @@
                 $(settings.itemTemplate({provider: item, href: href, itemTriggerClass: settings.itemTriggerClass})).appendTo($element);
               }
             }
-            if (settings.channels.indexOf('comment') > -1) {
-              $(settings.itemTemplate({provider: 'comment', href:'#', itemTriggerClass: settings.itemTriggerClass})).appendTo($element);
-            }
+          }
+          if (settings.channels.indexOf('comment') > -1) {
+            $(settings.itemTemplate({provider: 'comment', itemTriggerClass: settings.itemTriggerClass})).appendTo($element);
           }
 
           // Bind click
@@ -145,7 +145,8 @@
         '</li>';
       }
       if (props.provider === 'comment') {
-        return '<li class="' + props.provider + '">' +
+        return '<li class="separator"></li>' +
+        '<li class="' + props.provider + '">' +
         '<a href="#" title="Comment on this page" class="' + props.itemTriggerClass + ' ' + props.provider + '">' +
           '<i class="' + iconClasses[props.provider] + '">' +
           (((settings.commentnumber !== undefined) && Number.isInteger(settings.commentnumber)) ?
