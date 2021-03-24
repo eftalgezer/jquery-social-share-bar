@@ -113,8 +113,7 @@
     popupHeight: 528,
     channels: ['facebook', 'twitter', 'linkedin', 'email'],
     itemTriggerClass: 'js-share',
-    containerTemplate: function (
-    ) {
+    containerTemplate: function (props) {
       return '<ul class="sharing-providers"></ul>';
     },
 
