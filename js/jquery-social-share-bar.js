@@ -66,26 +66,29 @@
           else {
             for (var item in settings.channels) {
               item = settings.channels[item];
-              if (item !== 'webshareapi') {
+              if (item !== 'webshareapi' || item !== 'comment') {
                 href = helpers.channels[item].url;
                 href = href.replace('|u|', u).replace('|t|', t).replace('|d|', d)
                   .replace('|140|', t.substring(0, 130));
                 $(settings.itemTemplate({provider: item, href: href, itemTriggerClass: settings.itemTriggerClass})).appendTo($element);
               }
             }
+            if (settings.channels.indexOf('comment') > -1) {
+              $(settings.itemTemplate({provider: 'comment', itemTriggerClass: settings.itemTriggerClass})).appendTo($element);
+            }
           }
 
           // Bind click
           $element.on('click', '.' + settings.itemTriggerClass, function (e) {
             e.preventDefault();
-            if($(this).hasClass('webshareapi')) {
+            if ($(this).hasClass('webshareapi')) {
               navigator.share({
                 title: t,
                 text : d,
                 url: u
               });
             }
-            else {
+            else if (!($(this).hasClass('comment'))) {
               var top = (screen.height / 2) - (settings.popupHeight / 2),
                   left = (screen.width / 2) - (settings.popupWidth / 2);
               window.open($(this).data('href') || $(this).attr('href'), 't', 'toolbar=0,resizable=1,status=0,copyhistory=no,width=' + settings.popupWidth + ',height=' + settings.popupHeight + ',top=' + top + ',left=' + left);
@@ -139,6 +142,16 @@
         return '<li class="' + props.provider + '">' +
         '<a href="#" title="Share" class="' + props.itemTriggerClass + ' ' + props.provider + '">' +
         '<i class="' + iconClasses[props.provider] + '"></i>' +
+        '</a>' +
+        '</li>';
+      }
+      if (props.provider === 'comment') {
+        return '<li class="' + props.provider + '">' +
+        '<a href="#" title="Share" class="' + props.itemTriggerClass + ' ' + props.provider + '">' +
+          '<i class="' + iconClasses[props.provider] + '">' +
+          (((settings.commentnumber !== undefined) && Number.isInteger(settings.commentnumber)) ?
+           '<span class="' + props.itemTriggerClass + ' commentnumber' + '">' + settings.commentnumber + '</span>' : '') +
+           '</i>' +
         '</a>' +
         '</li>';
       }
