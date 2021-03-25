@@ -149,8 +149,8 @@
         '<li class="' + props.provider + '">' +
         '<a href="#" title="Comment on this page" class="' + props.itemTriggerClass + ' ' + props.provider + '">' +
           '<i class="' + iconClasses[props.provider] + '">' +
-          (((commentNumber !== undefined) && Number.isInteger(commentNumber)) ?
-           '<span class="' + props.itemTriggerClass + ' comment-number' + '">' + commentNumber + '</span>' : '') +
+          (((props.commentNumber !== undefined) && Number.isInteger(props.commentNumber)) ?
+           '<span class="' + props.itemTriggerClass + ' comment-number' + '">' + props.commentNumber + '</span>' : '') +
            '</i>' +
         '</a>' +
         '</li>';
