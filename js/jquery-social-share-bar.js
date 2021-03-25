@@ -66,7 +66,7 @@
           else {
             for (var item in settings.channels) {
               item = settings.channels[item];
-              if ((item !== 'webshareapi') || (item !== 'comment')) {
+              if ((item !== 'webshareapi') && (item !== 'comment')) {
                 href = helpers.channels[item].url;
                 href = href.replace('|u|', u).replace('|t|', t).replace('|d|', d)
                   .replace('|140|', t.substring(0, 130));
