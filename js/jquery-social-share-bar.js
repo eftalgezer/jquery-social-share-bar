@@ -37,9 +37,6 @@
           pageTitle = settings.title || document.title || '',
           pageUrl = settings.pageUrl || window.location.href,
           pageDesc = settings.pageDesc || $('head > meta[name="description"]').attr("content") || '',
-          position = settings.position || 'left',
-          theme = settings.theme || 'circle',
-          animate = settings.animate === false ? false : true,
           u = encodeURIComponent(pageUrl),
           t = encodeURIComponent(pageTitle);
 
@@ -49,15 +46,6 @@
             id = $element.attr("id"),
             d = pageDesc.substring(0, 250),
             href;
-
-          // Add class for positioning and animation of the widget
-          $(this).addClass(position);
-          if (animate) {
-            $(this).addClass('animate');
-          }
-
-          // Add class for theming the widget
-          $element.addClass(theme);
 
           // Append HTML for each network button
           if ((settings.channels.indexOf('webshareapi') > -1) && (navigator.share !== undefined)) {
