@@ -91,7 +91,7 @@
               $(".sharing-providers li.break .fas").toggleClass("fa-plus fa-minus");
               $('.sharing-providers li.toggle').toggle();
             }
-            else if (!($(this).hasClass('comment'))) {
+            else {
               e.preventDefault();
               var top = (screen.height / 2) - (settings.popupHeight / 2),
                   left = (screen.width / 2) - (settings.popupWidth / 2);
