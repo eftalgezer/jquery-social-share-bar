@@ -63,13 +63,13 @@
             }
           }
           if (settings.channels.indexOf('comment') > -1) {
-            $(settings.itemTemplate({provider: 'comment', commentNumber: settings.commentNumber, itemTriggerClass: settings.itemTriggerClass})).appendTo($element);
+            $(settings.itemTemplate({provider: 'comment', comment: settings.comment, itemTriggerClass: settings.itemTriggerClass})).appendTo($element);
           }
 
           // Bind click
           $element.on('click', '.' + settings.itemTriggerClass, function (e) {
-            e.preventDefault();
             if ($(this).hasClass('webshareapi')) {
+              e.preventDefault();
               navigator.share({
                 title: t,
                 text : d,
@@ -77,9 +77,13 @@
               });
             }
             else if (!($(this).hasClass('comment'))) {
+              e.preventDefault();
               var top = (screen.height / 2) - (settings.popupHeight / 2),
                   left = (screen.width / 2) - (settings.popupWidth / 2);
               window.open($(this).data('href') || $(this).attr('href'), 't', 'toolbar=0,resizable=1,status=0,copyhistory=no,width=' + settings.popupWidth + ',height=' + settings.popupHeight + ',top=' + top + ',left=' + left);
+            }
+            else if (($(this).hasClass('comment')) && (settings.comment.action !== undefined)) {
+              window[settings.comment.action](e);
             }
           });
         });// End plugin instance
@@ -135,10 +139,10 @@
       if (props.provider === 'comment') {
         return '<li class="separator"></li>' +
         '<li class="' + props.provider + '">' +
-        '<a href="#" title="Comment on this page" class="' + props.itemTriggerClass + ' ' + props.provider + '">' +
+        '<a href="' + ((props.comment.href !== undefined) ? props.comment.href : '#') + '" title="Comment on this page" class="' + props.itemTriggerClass + ' ' + props.provider + '">' +
           '<i class="' + iconClasses[props.provider] + '">' +
-          (((props.commentNumber !== undefined) && Number.isInteger(props.commentNumber)) ?
-           '<span class="' + props.itemTriggerClass + ' comment-number' + '">' + props.commentNumber + '</span>' : '') +
+          (((props.comment.number !== undefined) && Number.isInteger(props.comment.number)) ?
+           '<span class="' + props.itemTriggerClass + ' comment-number' + '">' + props.comment.number + '</span>' : '') +
            '</i>' +
         '</a>' +
         '</li>';
