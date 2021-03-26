@@ -52,13 +52,21 @@
             $(settings.itemTemplate({provider: 'webshareapi', itemTriggerClass: settings.itemTriggerClass})).appendTo($element);
           }
           else {
+            var i = 0;
             for (var item in settings.channels) {
+              i++;
               item = settings.channels[item];
               if ((item !== 'webshareapi') && (item !== 'comment')) {
                 href = helpers.channels[item].url;
                 href = href.replace('|u|', u).replace('|t|', t).replace('|d|', d)
                   .replace('|140|', t.substring(0, 130));
                 $(settings.itemTemplate({provider: item, href: href, itemTriggerClass: settings.itemTriggerClass})).appendTo($element);
+              }
+              if ((settings.break !== undefined) && (i === settings.break + 1)) {
+                $(settings.itemTemplate({provider: 'break', itemTriggerClass: settings.itemTriggerClass})).appendTo($element);
+              }
+              else if ((settings.break !== undefined) && (i > settings.break + 1)) {
+                $(item).addClass('toggle').css('display', 'none');
               }
             }
           }
@@ -76,14 +84,18 @@
                 url: u
               });
             }
+            else if (($(this).hasClass('comment')) && (settings.comment.action !== undefined)) {
+              window[settings.comment.action](e);
+            }
+            else if (($(this).hasClass('break'))) {
+              $(".sharing-providers li.break .fas").toggleClass("fa-plus fa-minus");
+              $('.sharing-providers li.toggle').toggle();
+            }
             else if (!($(this).hasClass('comment'))) {
               e.preventDefault();
               var top = (screen.height / 2) - (settings.popupHeight / 2),
                   left = (screen.width / 2) - (settings.popupWidth / 2);
               window.open($(this).data('href') || $(this).attr('href'), 't', 'toolbar=0,resizable=1,status=0,copyhistory=no,width=' + settings.popupWidth + ',height=' + settings.popupHeight + ',top=' + top + ',left=' + left);
-            }
-            else if (($(this).hasClass('comment')) && (settings.comment.action !== undefined)) {
-              window[settings.comment.action](e);
             }
           });
         });// End plugin instance
@@ -124,14 +136,15 @@
         'telegram': 'fab fa-telegram-plane',
         'comment': 'fas fa-comment',
         'webshareapi': 'fas fa-share-alt',
+        'break': 'fas fa-plus'
       }
 
       // Special handling for email
       var providerName = props.provider === 'email' ? 'email' : props.provider.charAt(0).toUpperCase() + props.provider.slice(1);
 
-      if (props.provider === 'webshareapi') {
+      if (props.provider in ['webshareapi', 'break']) {
         return '<li class="' + props.provider + '">' +
-        '<a href="#" title="Share" class="' + props.itemTriggerClass + ' ' + props.provider + '">' +
+        '<a href="#" title="' + ((props.provider === 'webshareapi') ? 'Share' : 'More...' + '" class="' + props.itemTriggerClass + ' ' + props.provider + '">' +
         '<i class="' + iconClasses[props.provider] + '"></i>' +
         '</a>' +
         '</li>';
