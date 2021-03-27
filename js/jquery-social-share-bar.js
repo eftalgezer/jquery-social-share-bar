@@ -62,10 +62,10 @@
                   .replace('|140|', t.substring(0, 130));
                 $(settings.itemTemplate({provider: item, href: href, itemTriggerClass: settings.itemTriggerClass})).appendTo($element);
               }
-              if ((settings.break !== undefined) && (i === settings.break + 1)) {
+              if ((settings.break !== undefined) && (i === settings.break)) {
                 $(settings.itemTemplate({provider: 'break', itemTriggerClass: settings.itemTriggerClass})).appendTo($element);
               }
-              if ((settings.break !== undefined) && (i > settings.break + 1)) {
+              if ((settings.break !== undefined) && (i > settings.break)) {
                 console.log($(item).addClass('toggle').css('display', 'none'));
               }
             }
