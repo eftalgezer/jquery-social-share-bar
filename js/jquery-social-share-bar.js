@@ -65,7 +65,7 @@
               if ((settings.break !== undefined) && (i === settings.break + 1)) {
                 $(settings.itemTemplate({provider: 'break', itemTriggerClass: settings.itemTriggerClass})).appendTo($element);
               }
-              else if ((settings.break !== undefined) && (i > settings.break + 1)) {
+              if ((settings.break !== undefined) && (i > settings.break + 1)) {
                 $(item).addClass('toggle').css('display', 'none');
               }
             }
@@ -150,7 +150,7 @@
         '</a>' +
         '</li>';
       }
-      if (props.provider === 'comment') {
+      else if (props.provider === 'comment') {
         return '<li class="separator"></li>' +
         '<li class="' + props.provider + '">' +
         '<a href="' + ((props.comment.href !== undefined) ? (props.comment.href + '" data-href="' + props.comment.href) : '#') + 
@@ -162,11 +162,13 @@
         '</a>' +
         '</li>';
       }
-      return '<li class="' + props.provider + '">' +
+      else {
+        return '<li class="' + props.provider + '">' +
         '<a href="#" data-href="' + props.href + '" title="Share this page ' + (props.provider === 'email' ? 'via ' : 'on ') + providerName + '" class="' + props.itemTriggerClass + ' ' + props.provider + '">' +
         '<i class="' + iconClasses[props.provider] + '"></i>' +
         '</a>' +
         '</li>';
+      }
     }
   };
 
