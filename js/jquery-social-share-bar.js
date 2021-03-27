@@ -143,7 +143,7 @@
       // Special handling for email
       var providerName = props.provider === 'email' ? 'email' : props.provider.charAt(0).toUpperCase() + props.provider.slice(1);
 
-      if (props.provider in ['webshareapi', 'break']) {
+      if (props.provider in {'webshareapi', 'break'}) {
         return '<li class="' + props.provider + '">' +
         '<a href="#" title="' + ((props.provider === 'webshareapi') ? 'Share' : 'More...') + '" class="' + props.itemTriggerClass + ' ' + props.provider + '">' +
         '<i class="' + iconClasses[props.provider] + '"></i>' +
@@ -153,8 +153,8 @@
       else if (props.provider === 'comment') {
         return '<li class="separator"></li>' +
         '<li class="' + props.provider + '">' +
-        '<a href="' + ((props.comment.href !== undefined) ? (props.comment.href + '" data-href="' + props.comment.href) : '#') + 
-                       '" title="Comment on this page" class="' + props.itemTriggerClass + ' ' + props.provider + '">' +
+        '<a href="#" ' + (props.comment.href !== undefined ? ('data-href="' + props.comment.href + '"') : '') +
+          '" title="Comment on this page" class="' + props.itemTriggerClass + ' ' + props.provider + '">' +
           '<i class="' + iconClasses[props.provider] + '">' +
           (((props.comment.number !== undefined) && Number.isInteger(props.comment.number)) ?
            '<span class="' + props.itemTriggerClass + ' comment-number' + '">' + props.comment.number + '</span>' : '') +
@@ -162,7 +162,7 @@
         '</a>' +
         '</li>';
       }
-      else if (!(props.provider in ['webshareapi', 'break', 'comment'])) {
+      else {
         return '<li class="' + props.provider + '">' +
         '<a href="#" data-href="' + props.href + '" title="Share this page ' + (props.provider === 'email' ? 'via ' : 'on ') + providerName + '" class="' + props.itemTriggerClass + ' ' + props.provider + '">' +
         '<i class="' + iconClasses[props.provider] + '"></i>' +
