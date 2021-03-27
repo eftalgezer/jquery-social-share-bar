@@ -143,7 +143,7 @@
       // Special handling for email
       var providerName = props.provider === 'email' ? 'email' : props.provider.charAt(0).toUpperCase() + props.provider.slice(1);
 
-      if (props.provider in {'webshareapi', 'break'}) {
+      if (['webshareapi', 'break'].indexOf(props.provider) > -1) {
         return '<li class="' + props.provider + '">' +
         '<a href="#" title="' + ((props.provider === 'webshareapi') ? 'Share' : 'More...') + '" class="' + props.itemTriggerClass + ' ' + props.provider + '">' +
         '<i class="' + iconClasses[props.provider] + '"></i>' +
