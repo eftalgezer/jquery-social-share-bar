@@ -153,8 +153,8 @@
       else if (props.provider === 'comment') {
         return '<li class="separator"></li>' +
         '<li class="' + props.provider + '">' +
-        '<a href="#" ' + (props.comment.href !== undefined ? ('data-href="' + props.comment.href + '"') : '') +
-          '" title="Comment on this page" class="' + props.itemTriggerClass + ' ' + props.provider + '">' +
+        '<a href="#"' + (props.comment.href !== undefined ? (' data-href="' + props.comment.href + '" ') : ' ') +
+          '"title="Comment on this page" class="' + props.itemTriggerClass + ' ' + props.provider + '">' +
           '<i class="' + iconClasses[props.provider] + '">' +
           (((props.comment.number !== undefined) && Number.isInteger(props.comment.number)) ?
            '<span class="' + props.itemTriggerClass + ' comment-number' + '">' + props.comment.number + '</span>' : '') +
