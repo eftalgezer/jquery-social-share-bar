@@ -66,7 +66,7 @@
                 $(settings.itemTemplate({provider: 'break', itemTriggerClass: settings.itemTriggerClass})).appendTo($element);
               }
               if ((settings.break !== undefined) && (i > settings.break)) {
-                $('.' + item).addClass('toggle').css('display', 'none');
+                $('li.' + item).addClass('toggle').css('display', 'none');
               }
             }
           }
