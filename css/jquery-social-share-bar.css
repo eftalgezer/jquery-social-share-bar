@@ -9,10 +9,12 @@
 .sharing-providers {
   list-style-type: none;
 }
+
 .sharing-providers {
   padding: 0;
   margin: 0;
 }
+
 .sharing-providers > li {
   display: block;
   text-align: center;
