@@ -25,19 +25,24 @@
   background: #777777;
   transition: 0.5s all;
 }
+
 .sharing-providers.circle > li {
   border-radius: 50%;
   margin: 2px;
 }
+
 #share-bar.left {
  left: 0;
 }
+
 #share-bar.left .sharing-providers > li {
  margin-left: 0;
 }
+
 #share-bar.right {
  right: 0;
 }
+
 #share-bar.right .sharing-providers > li {
  margin-right: 0;
 }
@@ -50,13 +55,16 @@
   line-height: 45px;
   display: block;
 }
+
 .sharing-providers.circle > li > a {
   border-radius: 50%;
 }
+
 .sharing-providers > li > a {
   color: white;
   font-size: 25px;
 }
+
 .sharing-providers > li > a,
 .sharing-providers > li > a:hover {
   text-decoration: none;
@@ -123,9 +131,11 @@
     text-align: center;
     padding: 8px;
   }
+
   #share-bar .sharing-providers > li {
     display: inline-block;
   }
+
   #share-bar.animate .sharing-providers > li:hover {
     transform: translateX(0px) !important;
     transform: translateY(-5px) !important;
